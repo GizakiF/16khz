@@ -172,7 +172,7 @@ for i, iSubject in enumerate(subjectNbTab):
     subject_nbSample_train_splits = []
 
     # --- Parallelize 50 Splits using joblib ---
-    split_results = Parallel(n_jobs=-1)(  # n_jobs=-1 to use all CPUs, adjust as needed
+    split_results = Parallel(n_jobs=8)(  # n_jobs=-1 to use all CPUs, adjust as needed
         delayed(process_split)(iSplit, iSubject, X_subject,
                                Y_subject, outFolder, cv_inner, param_grid)
         for iSplit in range(50)
